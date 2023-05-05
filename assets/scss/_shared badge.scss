@@ -1,0 +1,362 @@
+//BADGES
+@mixin padding_gap($pt, $pr, $pb, $pl, $gap) {
+    padding: $pt $pr $pb $pl;
+    gap: $gap;
+  }
+  
+  @mixin badge_behaviour($background, $color, $icon_color, $border_radius) {
+    background-color: $background;
+    color: $color;
+    border-radius: $border_radius;
+  
+    .material-symbols-rounded {
+      color: $icon_color;
+    }
+  }
+  
+  @mixin hover_behaviour($background, $color, $icon_color, $border_radius){
+    &:hover { 
+      @include badge_behaviour($background, $color, $icon_color, $border_radius)
+    }
+  }
+  
+  .shared-badge {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  
+    // PADDING AND GAP
+    // BADGES
+    &.h1-badge-padding-gap { 
+        @include padding_gap(12px, 12px, 12px, 12px, 4px); 
+    } 
+    &.h2-badge-padding-gap { 
+        @include padding_gap(8px, 12px, 8px, 12px, 4px); 
+    } 
+    &.h3-badge-padding-gap { 
+        @include padding_gap(4px, 10px, 4px, 10px, 4px); 
+    } 
+    &.h4-badge-padding-gap { 
+        @include padding_gap(4px, 10px, 4px, 10px, 4px); 
+    } 
+    &.h5-badge-padding-gap { 
+        @include padding_gap(2px, 8px, 2px, 8px, 4px); 
+    } 
+    &.h6p-badge-padding-gap { 
+        @include padding_gap(2px, 8px, 2px, 8px, 4px); 
+    } 
+    &.specialp-badge-padding-gap { 
+        @include padding_gap(2px, 8px, 2px, 8px, 4px); 
+    }
+  
+    // PILLS 
+    &.h1-pill-padding-gap { 
+        @include padding_gap(8px, 16px, 8px, 16px, 4px); 
+    }
+    &.h2-pill-padding-gap {
+         @include padding_gap(8px, 16px, 8px, 16px, 4px); 
+        } 
+    &.h3-pill-padding-gap { 
+        @include padding_gap(4px, 12px, 4px 12px, 4px); 
+    } 
+    .h4-pill-padding-gap {
+        @include padding_gap(4px, 10px, 4px 10px, 4px); 
+    }
+    &.h5-pill-padding-gap { 
+        @include padding_gap(2px, 10px, 2px, 10px, 4px); 
+    } 
+    &.h6p-pill-padding-gap { 
+        @include padding_gap(2px, 8px, 2px, 8px, 4px); 
+    } 
+    &.specialp-pill-padding-gap { 
+        @include padding_gap(8px, 8px, 8px, 8px, 4px); 
+    }
+  
+    // SPECIAL PILLS
+    &.h1-special-pill-padding-gap { 
+        @include padding_gap(8px, 16px, 8px, 24px, 4px); 
+    } 
+    &.h2-special-pill-padding-gap { 
+        @include padding_gap(8px, 10px, 8px, 20px, 4px); 
+    } 
+    &.h3-special-pill-padding-gap { 
+        @include padding_gap(4px, 10px, 4px, 16px, 4px); 
+    } 
+    &.h4-special-pill-padding-gap { 
+        @include padding_gap(4px, 10px, 4px, 16px, 4px); 
+    } 
+    &.h5-special-pill-padding-gap { 
+        @include padding_gap(2px, 8px, 2px, 14px, 4px); 
+    } 
+    &.h6p-special-pill-padding-gap { 
+        @include padding_gap(2px, 6px, 2px, 12px, 4px); 
+    } 
+    &.specialp-special-pill-padding-gap { 
+        @include padding_gap(2px, 4px, 2px, 10px, 2px); 
+    } 
+    &.text_medium-special-pill-padding-gap { 
+        @include padding_gap(2px, 2px, 6px, 6px, 4px); 
+    } 
+    &.text_small-special-pill-padding-gap { 
+        @include padding_gap(2px, 2px, 4px, 4px, 4px); 
+    }
+  
+    // DIMENSION TYPE
+    // BADGETS
+    &.h1-badge-form {
+      height: 55px;
+    }
+    &.h2-badge-form {
+      height: 50px;
+    }
+    &.h3-badge-form {
+      height: 40px;
+    }
+    &.h4-badge-form {
+      height: 35px;
+    }
+    &.h5-badge-form {
+      height: 30px;
+    }
+    &.h6p-badge-form {
+      height: 25px;
+    }
+    &.specialp-badge-form {
+      height: 20px;
+    }
+    &.h1-badge-text-form {
+      height: 55px;
+    }
+    &.h2-badge-text-form {
+      height: 50px;
+    }
+    &.h3-badge-text-form {
+      height: 40px;
+    }
+    &.h4-badge-text-form {
+      height: 35px;
+    }
+    &.h5-badge-text-form {
+      height: 30px;
+    }
+    &.h6p-badge-text-form {
+      height: 25px;
+    }
+    &.specialp-badge-text-form {
+      height: 20px;
+    }
+  
+    // PILLS
+    &.h1-pill-form {
+      height: 55px;
+    }
+    &.h2-pill-form {
+      height: 50px;
+    }
+    &.h3-pill-form {
+      height: 40px;
+    }
+    &.h4-pill-form {
+      height: 35px;
+    }
+    &.h5-pill-form {
+      height: 30px;
+    }
+    &.h6p-pill-form {
+      height: 25px;
+    }
+    &.specialp-pill-form {
+      height: 20px;
+    }
+    // To activate notification badge, leave text and icon blank
+    &.notification-pill-form {
+      width: 16px;
+      height: 16px;
+    }
+  
+    &.h1-pill-text-form {
+      height: 55px;
+    }
+    &.h2-pill-text-form {
+      height: 50px;
+    }
+    &.h3-pill-text-form {
+      height: 40px;
+    }
+    &.h4-pill-text-form {
+      height: 35px;
+    }
+    &.h5-pill-text-form {
+      height: 30px;
+    }
+    &.h6p-pill-text-form {
+      height: 25px;
+    }
+    &.specialp-pill-text-form {
+      height: 20px;
+    }
+    &.text_medium-pill-text-form {
+      width: 26px;
+      height: 25px;
+    }
+    &.text_small-pill-text-form {
+      width: 21px;
+      height: 20px;
+    }
+  
+    // FONT STYLE
+    .text-badge {
+      font-family: var(--font-style);
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+  
+      &.h1-text {
+        font-size: 40px;
+        line-height: 58px;
+      }
+      &.h2-text {
+        font-size: 32px;
+        line-height: 56px;
+      }
+      &.h3-text {
+        font-size: 28px;
+        line-height: 44px;
+      }
+      &.h4-text {
+        font-size: 24px;
+        line-height: 34px;
+      }
+      &.h5-text {
+        font-size: 20px;
+        line-height: 28px;
+      }
+      &.h6p-text {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      &.specialp-text {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      &.text_medium-text {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      &.text_small-text {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  
+    .material-symbols-rounded {
+      font-variation-settings: 'FILL' 1;
+    }
+  
+    &.disabled {
+      opacity: 0.6;
+    }
+  
+    // BADGES
+    &.progress_primary_badge {
+      @include badge_behaviour(var(--progress-color), var(--white-color), var(--white-color), 4px);
+      @include hover_behaviour(var(--progress-darker1), var(--white-color), var(--white-color), 4px);
+    }
+    &.progress_secondary_badge {
+      @include badge_behaviour(var(--progress-lighter1), var(--progress-darker2), var(--progress-color), 4px);
+    }
+    &.goal_primary_badge {
+      @include badge_behaviour(var(--goal-color), var(--white-color), var(--white-color), 4px);
+    }
+    &.goal_secondary_badge {
+      @include badge_behaviour(var(--goal-lighter1), var(--goal-darker2), var(--goal-color), 4px);
+    }
+    &.danger_primary_badge {
+      @include badge_behaviour(var(--danger-color), var(--white-color), var(--white-color), 4px);
+    }
+    &.danger_secondary_badge{
+      @include badge_behaviour(var(--danger-lighter1), var(--danger-darker2), var(--danger-color), 4px);
+    }
+    &.warning_primary_badge {
+      @include badge_behaviour(var(--warning-color), #000000, var(--warning-darker2), 4px);
+    }
+    &.warning_secondary_badge {
+      @include badge_behaviour(var(--warning-lighter1), var(--warning-darker2), var(--warning-darker1), 4px);
+    }
+    &.site_primary_badge {
+      @include badge_behaviour(var(--primary-color), var(--primary-font-color), var(--primary-font-color), 4px);
+    }
+    &.site_secondary_badge {
+      @include badge_behaviour(var(--secondary-color), var(--secondary-font-color), var(--primary-color), 4px);
+    }
+    &.dark_gray_primary_badge {
+      @include badge_behaviour(var(--g5-color), var(--white-color), var(--white-color), 4px);
+    }
+    &.dark_gray_secondary_badge {
+      @include badge_behaviour(var(--g2-color), var(--g6-colo), var(--g6-colo), 4px);
+    }
+    &.light_gray_primary_badge {
+      @include badge_behaviour(var(--g1-color), var(--g6-colo), var(--g6-colo), 4px);
+    }
+    &.light_gray_secondary_badge {
+      @include badge_behaviour(var(--white-color), var(--g5-color), var(--g5-color), 4px);
+    }
+    &.default_primary_badge {
+      @include badge_behaviour(var(--white-color), var(--site-color), var(--site-color), 4px);
+    }
+    &.default_secondary_badge {
+      @include badge_behaviour(var(--white-color), var(--g6-colo), var(--g6-colo), 4px);
+    }
+  
+    // PILLS
+    &.progress_primary_pill {
+      @include badge_behaviour(var(--progress-color), var(--white-color), var(--white-color), 55px);
+    }
+    &.progress_secondary_pill {
+      @include badge_behaviour(var(--progress-lighter1), var(--progress-darker2), var(--progress-color), 55px);
+    }
+    &.goal_primary_pill {
+      @include badge_behaviour(var(--goal-color), var(--white-color), var(--white-color), 55px);
+    }
+    &.goal_secondary_pill {
+      @include badge_behaviour(var(--goal-lighter1), var(--goal-darker2), var(--goal-color), 55px);
+    }
+    &.danger_primary_pill {
+      @include badge_behaviour(var(--danger-color), var(--white-color), var(--white-color), 55px);
+    }
+    &.danger_secondary_pill{
+      @include badge_behaviour(var(--danger-lighter1), var(--danger-darker2), var(--danger-color), 55px);
+    }
+    &.warning_primary_pill {
+      @include badge_behaviour(var(--warning-color), #000000, var(--warning-darker2), 55px);
+    }
+    &.warning_secondary_pill {
+      @include badge_behaviour(var(--warning-lighter1), var(--warning-darker2), var(--warning-darker1), 55px);
+    }
+    &.site_primary_pill {
+      @include badge_behaviour(var(--primary-color), var(--primary-font-color), var(--primary-font-color), 55px);
+    }
+    &.site_secondary_pill {
+      @include badge_behaviour(var(--secondary-color), var(--secondary-font-color), var(--primary-color), 55px);
+    }
+    &.dark_gray_primary_pill {
+      @include badge_behaviour(var(--g6-colo), var(--white-color), var(--white-color), 55px);
+    }
+    &.dark_gray_secondary_pill {
+      @include badge_behaviour(var(--white-color), var(--g6-colo), var(--g6-colo), 55px);
+    }
+    &.light_gray_primary_pill {
+      @include badge_behaviour(var(--g5-color), var(--white-color), var(--white-color), 55px);
+    }
+    &.light_gray_secondary_pill {
+      @include badge_behaviour(var(--white-color), var(--g5-color), var(--g5-color), 55px);
+    }
+    &.default_primary_pill {
+      @include badge_behaviour(var(--white-color), var(--site-color), var(--site-color), 55px);
+    }
+    &.default_secondary_pill {
+      @include badge_behaviour(var(--white-color), var(--g6-colo), var(--g6-colo), 55px);
+    }
+  }

@@ -1,0 +1,290 @@
+/*BUTTONS*/
+@mixin btn-size($pt, $pr, $pb, $pl, $hg, $gap, $fs, $fill, $wght, $grad, $opsz ) {
+  padding: $pt $pr $pb $pl;
+  height: $hg;
+  gap: $gap;
+  font-size: $fs;
+
+  .material-symbols-rounded{
+    font-variation-settings: $fill, $wght, $grad, ;
+    font-size: $opsz;
+  }
+}
+
+@mixin btn-type($color, $bg, $bd, $icon-color){
+  color: $color;
+  background-color: $bg;
+  border: $bd;
+
+  span{
+    color: $icon-color !important;
+  }
+}
+
+@mixin btn-type-hover($color, $bg, $border, $icon-color){
+  &:hover:not([disabled]) { 
+    color: $color;
+    background-color: $bg;
+    border: 2px solid $border;
+
+    span{
+      color: $icon-color !important;
+    }
+  }
+}
+
+@mixin btn-type-press($color, $bg, $border, $icon-color){
+  &:active:not([disabled]) { 
+    color: $color;
+    background-color: $bg;
+    border: 2px solid $border;
+    box-shadow: none;
+
+    span{
+      color: $icon-color !important;
+    }
+  }
+}
+
+@mixin btn-disabled($color, $bg, $border, $icon-color){
+  &[disabled]{
+    color: $color;
+    background-color: $bg ;
+    border: 2px solid $border;
+    outline: none;
+    outline-offset: none;
+
+    span{
+      color: $icon-color !important;
+    }
+  }
+}
+
+@mixin btn-type-focus($color,$bg,$border, $b-shadow, $icon-color){
+  &:focus-visible:not([disabled]), &:focus:not([disabled]) { 
+    color: $color;
+    background-color: $bg ;
+    border: 2px solid $border;
+    box-shadow: $b-shadow;
+    outline: none;
+    outline-offset: none;
+
+    span{
+      color: $icon-color !important;
+    }
+  }
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: 500;
+
+  /*SIZE*/
+  &.btn-sm {
+    @include btn-size(5px, 10px, 5px, 6px, 32px, 6px, 14px,'FILL' 1, 'wght' 400, 'GRAD' 0, 20px);
+  }
+
+  &.btn-md {
+    @include btn-size(6px, 12px, 6px, 8px, 40px, 8px, 16px, 'FILL' 1, 'wght' 400, 'GRAD' 0, 24px);
+  }
+
+  &.btn-lg {
+    @include btn-size(8px, 16px, 8px, 12px, 48px, 12px, 20px,'FILL' 1, 'wght' 400, 'GRAD' 0, 32px);
+  }
+  
+  &.btn-sm-text {
+    @include btn-size(5px, 10px, 5px, 10px, 32px, 0, 14px,'FILL' 1, 'wght' 400, 'GRAD' 0, 20px);
+  }
+
+  &.btn-md-text {
+    @include btn-size(6px, 12px, 6px, 12px, 40px, 0, 16px,'FILL' 1, 'wght' 400, 'GRAD' 0, 24px);
+  }
+
+  &.btn-lg-text {
+    @include btn-size(7px, 16px, 7px, 16px, 48px, 0, 20px,'FILL' 1, 'wght' 400, 'GRAD' 0, 32px);
+  }
+
+  &.btn-sm-icon {
+    @include btn-size(8px, 4px, 8px, 4px, 32px, 6px, 14px,'FILL' 1, 'wght' 400, 'GRAD' 0, 20px);
+  }
+
+  &.btn-md-icon {
+    @include btn-size(8px, 6px, 8px, 6px, 40px, 6px, 16px,'FILL' 1, 'wght' 400, 'GRAD' 0, 24px);
+  }
+  
+  &.btn-lg-icon {
+    @include btn-size(8px, 6px, 8px, 6px, 48px, 6px, 20px,'FILL' 1, 'wght' 400, 'GRAD' 0, 32px);
+  }
+  /*TYPES*/
+
+  &.solid-site{
+    @include btn-type(var(--white-color), var(--site-color), 2px solid var(--site-color),var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--site-darker1), var(--site-darker1),var(--white-color));
+    @include btn-disabled(var(--white-color), var(--site-lighter2), var(--site-lighter2),var(--white-color));
+    @include btn-type-focus(var(--white-color),var(--site-darker1),var(--site-darker1), var(--b-shadow-site),var(--white-color));
+    @include btn-type-press(var(--white-color), var(--site-darker2), var(--site-darker2),var(--white-color));
+  }
+
+  &.light-site{
+    @include btn-type(var(--site-darker1), transparent, 2px solid var(--site-color), var(--site-color));
+    @include btn-type-hover(var(--site-darker2),var(--site-lighter1),var(--site-darker1),var(--site-darker1));
+    @include btn-disabled(var(--site-lighter2),transparent, var(--site-lighter2), var(--site-lighter2));
+    @include btn-type-focus(var(--site-darker2),var(--site-lighter1),var(--site-darker1), var(--b-shadow-site), var(--site-darker1));
+    @include btn-type-press(var(--white-color), var(--site-color), var(--site-color), var(--white-color));
+  } 
+
+  &.invisible-site{
+    @include btn-type(var(--site-darker1), transparent, 2px solid   transparent, var(--site-color));
+    @include btn-type-hover(var(--site-darker2),var(--site-lighter1),var(--site-lighter1), var(--site-darker1));
+    @include btn-disabled(var(--site-lighter2),transparent, transparent, var(--site-lighter2));
+    @include btn-type-focus(var(--site-darker2),var(--site-lighter1),var(--site-lighter1), var(--b-shadow-site), var(--site-darker1));
+    @include btn-type-press(var(--white-color), var(--site-color), var(--site-color), var(--white-color));
+  }
+
+  &.solid-site-default{
+    @include btn-type(var(--site-darker1), var(--white-color), 2px solid var(--white-color),var(--site-color));
+    @include btn-type-hover(var(--site-darker2),var(--white-color), var(--white-color),var(--site-darker1));
+    @include btn-disabled(var(--site-lighter2), var(--g1-color), var(--g1-color),var(--site-lighter2));
+    @include btn-type-focus(var(--site-darker1),var(--g1-color),var(--g1-color), var(--b-shadow-negative),var(--site-darker1));
+    @include btn-type-press(var(--site-darker2), var(--g2-color), var(--g2-color),var(--site-darker1));
+  }
+
+  &.light-site-default{
+    @include btn-type(var(--white-color), transparent, 2px solid var(--white-color), var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--dark-transparency1),var(--white-color),var(--white-color));
+    @include btn-disabled(var(--g2-color),transparent, var(--g2-color), var(--g2-color));
+    @include btn-type-focus(var(--white-color),var(--dark-transparency1),var(--white-color), var(--b-shadow-negative), var(--white-color));
+    @include btn-type-press(var(--site-darker1), var(--white-color), var(--white-color), var(--site-color));
+  } 
+
+  &.invisible-site-default{
+    @include btn-type(var(--white-color), transparent, 2px solid   transparent, var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--dark-transparency1),transparent, var(--white-color));
+    @include btn-disabled(var(--g2-color),transparent, transparent, var(--g2-color));
+    @include btn-type-focus(var(--white-color),var(--dark-transparency1),var(--site-lighter1), var(--b-shadow-negative), var(--white-color));
+    @include btn-type-press(var(--site-darker1), var(--white-color), var(--white-color), var(--site-color));
+  }
+
+  &.solid-goal{
+    @include btn-type(var(--white-color), var(--goal-color), 2px solid var(--goal-color),var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--goal-darker1), var(--goal-darker1),var(--white-color));
+    @include btn-disabled(var(--white-color), var(--goal-lighter2), var(--goal-lighter2),var(--white-color));
+    @include btn-type-focus(var(--white-color),var(--goal-darker1),var(--goal-darker1), var(--b-shadow-goal),var(--white-color));
+    @include btn-type-press(var(--white-color), var(--goal-darker2), var(--goal-darker2),var(--white-color));
+  }
+
+  &.light-goal{
+    @include btn-type(var(--goal-darker1), transparent, 2px solid var(--goal-color), var(--goal-color));
+    @include btn-type-hover(var(--goal-darker2),var(--goal-lighter1),var(--goal-darker1),var(--goal-darker1));
+    @include btn-disabled(var(--goal-lighter2),transparent, var(--goal-lighter2), var(--goal-lighter2));
+    @include btn-type-focus(var(--goal-darker2),var(--goal-lighter1),var(--goal-darker1), var(--b-shadow-goal), var(--goal-darker1));
+    @include btn-type-press(var(--white-color), var(--goal-color), var(--goal-color), var(--white-color));
+  } 
+
+  &.invisible-goal{
+    @include btn-type(var(--goal-darker1), transparent, 2px solid   transparent, var(--goal-color));
+    @include btn-type-hover(var(--goal-darker2),var(--goal-lighter1),var(--goal-lighter1), var(--goal-darker1));
+    @include btn-disabled(var(--goal-lighter2),transparent, transparent, var(--goal-lighter2));
+    @include btn-type-focus(var(--goal-darker2),var(--goal-lighter1),var(--goal-lighter1), var(--b-shadow-goal), var(--goal-darker1));
+    @include btn-type-press(var(--white-color), var(--goal-color), var(--goal-color), var(--white-color));
+  }
+
+  &.solid-progress{
+    @include btn-type(var(--white-color), var(--progress-color), 2px solid var(--progress-color),var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--progress-darker1), var(--progress-darker1),var(--white-color));
+    @include btn-disabled(var(--white-color), var(--progress-lighter2), var(--progress-lighter2),var(--white-color));
+    @include btn-type-focus(var(--white-color),var(--progress-darker1),var(--progress-darker1), var(--b-shadow-progress),var(--white-color));
+    @include btn-type-press(var(--white-color), var(--progress-darker2), var(--progress-darker2),var(--white-color));
+  }
+
+  &.light-progress{
+    @include btn-type(var(--progress-darker1), transparent, 2px solid var(--progress-color), var(--progress-color));
+    @include btn-type-hover(var(--progress-darker2),var(--progress-lighter1),var(--progress-darker1),var(--progress-darker1));
+    @include btn-disabled(var(--progress-lighter2),transparent, var(--progress-lighter2), var(--progress-lighter2));
+    @include btn-type-focus(var(--progress-darker2),var(--progress-lighter1),var(--progress-darker1), var(--b-shadow-progress), var(--progress-darker1));
+    @include btn-type-press(var(--white-color), var(--progress-color), var(--progress-color), var(--white-color));
+  } 
+  
+  &.invisible-progress{
+    @include btn-type(var(--progress-darker1), transparent, 2px solid   transparent, var(--progress-color));
+    @include btn-type-hover(var(--progress-darker2),var(--progress-lighter1),var(--progress-lighter1), var(--progress-darker1));
+    @include btn-disabled(var(--progress-lighter2),transparent, transparent, var(--progress-lighter2));
+    @include btn-type-focus(var(--progress-darker2),var(--progress-lighter1),var(--progress-lighter1), var(--b-shadow-progress), var(--progress-darker1));
+    @include btn-type-press(var(--white-color), var(--progress-color), var(--progress-color), var(--white-color));
+  }
+
+  &.solid-danger{
+    @include btn-type(var(--white-color), var(--danger-color), 2px solid var(--danger-color),var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--danger-darker1), var(--danger-darker1),var(--white-color));
+    @include btn-disabled(var(--white-color), var(--danger-lighter2), var(--danger-lighter2),var(--white-color));
+    @include btn-type-focus(var(--white-color),var(--danger-darker1),var(--danger-darker1), var(--b-shadow-danger),var(--white-color));
+    @include btn-type-press(var(--white-color), var(--danger-darker2), var(--danger-darker2),var(--white-color));
+  }
+
+  &.light-danger{
+    @include btn-type(var(--danger-darker1), transparent, 2px solid var(--danger-color), var(--danger-color));
+    @include btn-type-hover(var(--danger-darker2),var(--danger-lighter1),var(--danger-darker1),var(--danger-darker1));
+    @include btn-disabled(var(--danger-lighter2),transparent, var(--danger-lighter2), var(--danger-lighter2));
+    @include btn-type-focus(var(--danger-darker2),var(--danger-lighter1),var(--danger-darker1), var(--b-shadow-danger), var(--danger-darker1));
+    @include btn-type-press(var(--white-color), var(--danger-color), var(--danger-color), var(--white-color));
+  } 
+
+  &.invisible-danger{
+    @include btn-type(var(--danger-darker1), transparent, 2px solid transparent, var(--danger-color));
+    @include btn-type-hover(var(--danger-darker2),var(--danger-lighter1),var(--danger-lighter1), var(--danger-darker1));
+    @include btn-disabled(var(--danger-lighter2),transparent, transparent, var(--danger-lighter2));
+    @include btn-type-focus(var(--danger-darker2),var(--danger-lighter1),var(--danger-lighter1), var(--b-shadow-danger), var(--danger-darker1));
+    @include btn-type-press(var(--white-color), var(--danger-color), var(--danger-color), var(--white-color));
+  }
+
+  &.solid-dark-default{
+    @include btn-type(var(--white-color), var(--g5-color), 2px solid var(--g5-color), var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--g6-color),var(--g6-color), var(--white-color));
+    @include btn-disabled(var(--white-color), var(--g3-color), var(--g3-color), var(--white-color));
+    @include btn-type-focus(var(--white-color),var(--g6-color),var(--g6-color), var(--b-shadow-site), var(--white-color));
+    @include btn-type-press(var(--white-color), var(--black-color), var(--black-color), var(--white-color));
+  }
+
+  &.light-dark-default{
+    @include btn-type(var(--g6-color), transparent, 2px solid var(--g5-color), var(--g5-color));
+    @include btn-type-hover(var(--black-color),var(--dark-transparency1),var(--g6-color),var(--g6-color));
+    @include btn-disabled(var(--g3-color),transparent, var(--g3-color), var(--g3-color));
+    @include btn-type-focus(var(--black-color),var(--dark-transparency1),var(--g6-color), var(--b-shadow-site), var(--g6-color));
+    @include btn-type-press(var(--white-color), var(--g5-color), var(--g5-color), var(--white-color));
+  } 
+
+  &.invisible-dark-default{
+    @include btn-type(var(--g6-color), transparent, 2px solid   transparent, var(--g5-color));
+    @include btn-type-hover(var(--black-color),var(--dark-transparency1), transparent, var(--g6-color));
+    @include btn-disabled(var(--g3-color),transparent, transparent, var(--g3-color));
+    @include btn-type-focus(var(--black-color),var(--dark-transparency1),transparent, var(--b-shadow-site), var(--g6-color));
+    @include btn-type-press(var(--white-color), var(--g5-color), var(--g5-color), var(--white-color));
+  }
+
+  &.solid-bright-default{
+    @include btn-type(var(--g6-color), var(--white-color), 2px solid var(--white-color), var(--g5-color));
+    @include btn-type-hover(var(--g6-color),var(--g1-color),var(--g1-color), var(--g6-color));
+    @include btn-disabled(var(--g3-color),var(--g1-color), var(--g1-color), var(--g3-color));
+    @include btn-type-focus(var(--g6-color),var(--g1-color),var(--g1-color), var(--b-shadow-negative), var(--g6-color));
+    @include btn-type-press(var(--g6-color), var(--g2-color), var(--g2-color), var(--g6-color));
+  }
+
+  &.light-bright-default{
+    @include btn-type(var(--white-color), transparent, 2px solid var(--white-color), var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--dark-transparency1),var(--white-color),var(--white-color));
+    @include btn-disabled(var(--g2-color),transparent, var(--g2-color), var(--g2-color));
+    @include btn-type-focus(var(--white-color),var(--dark-transparency1),var(--white-color), var(--b-shadow-negative), var(--white-color));
+    @include btn-type-press(var(--g6-color), var(--white-color), var(--white-color), var(--g6-color));
+  } 
+
+  &.invisible-bright-default{
+    @include btn-type(var(--white-color), transparent, 2px solid   transparent, var(--white-color));
+    @include btn-type-hover(var(--white-color),var(--dark-transparency1),transparent, var(--white-color));
+    @include btn-disabled(var(--g2-color),transparent, transparent, var(--g2-color));
+    @include btn-type-focus(var(--white-color),var(--dark-transparency1),var(--site-lighter1), var(--b-shadow-negative), var(--white-color));
+    @include btn-type-press(var(--g6-color), var(--white-color), var(--white-color), var(--g6-color));
+  }
+
+}
