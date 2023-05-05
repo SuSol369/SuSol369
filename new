@@ -1,0 +1,62 @@
+#= render 'shared/shared_button', 
+icon: 'save', 
+text: t('helpers.save_changes_label'), 
+size: :sm, 
+type: :solid-site
+
+
+#- btn_size_class = if text.present? && icon.present? 
+#   "btn-#{size}"
+#- elsif text.present?
+#   "btn-" + size.to_s + "-text"
+#- elsif icon.present?
+#   "btn-#{size}-icon"
+
+#%button.btn{ class: "#{btn_size_class} #{type}"}
+#  - if icon.present?
+#    %span.material-symbols-rounded
+#      = icon
+#  - if text.present?
+#      = t("shared_buttons.#{text}", default: text)
+
+#type se confunde con attribute
+- button_classes = "btn"
+- button_attributes = { type: "button", novalidate: true }
+- btn_size_class = ""
+- btn_type=""
+
+- if condition1
+  - button_attributes[:type] = "submit"
+- elsif condition2
+  - button_attributes[:href] = some_path
+  - button_attributes[:role] = "button"
+  - button_attributes[:title] = "Button"
+  #<a>
+- elsif condition3
+  - button_attributes[:href] = some_path
+  - button_attributes[:role] = "link"
+  - button_attributes[:title] = "descripción..."
+  #<input>
+- elsif condition4
+  - button_attributes[:type] = "button"
+  - button_attributes[:value] = "Button"
+- elsif condition5
+  - button_attributes[:type] = "reset"
+  - button_attributes[:value] = "Reset"
+- elsif condition6
+  - button_attributes[:type] = "submit"
+  - button_attributes[:value] = "Submit"
+  
+- if text.present? && icon.present?
+  - btn_size_class = "btn-#{size}"
+elsif text.present?
+  - btn_size_class = "btn-" + size.to_s + "-text"
+elsif icon.present?
+  - btn_size_class = "btn-#{size}-icon"
+
+%button.btn{ class: "#{btn_size_class} #{button_classes} #{btn_type}", button_attributes }
+  - if icon.present?
+    %span.material-symbols-rounded
+      = icon
+  - if text.present?
+      = t("shared_buttons.#{text}", default: text)
