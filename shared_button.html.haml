@@ -1,0 +1,16 @@
+= render 'shared/shared_button', icon: 'save', text: t('helpers.save_changes_label'), size: :sm, type: :solid-goal
+
+- btn_size_class = if text.present? & icon.present? 
+   "btn-#{size}"
+- elsif text.present?
+   "btn-" + size + "-text"
+- elsif icon.present?
+   "btn-#{size}-icon"
+
+%button.btn{ class: "#{btn_size_class} #{type}"}
+  - if icon.present?
+    %span.material-symbols-rounded
+      = icon
+  - if text.present?
+    .text-button{ class: "#{size}-text" }
+      = t("shared_buttons.#{text}", default: text) 
